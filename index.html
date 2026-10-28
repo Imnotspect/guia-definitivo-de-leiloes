@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          var _origFetch = typeof window !== 'undefined' && window.fetch ? window.fetch.bind(window) : null;
+          var _currentFetch = _origFetch;
+          if (typeof window !== 'undefined') {
+            Object.defineProperty(window, 'fetch', {
+              get: function() {
+                return _currentFetch;
+              },
+              set: function(val) {
+                _currentFetch = val;
+              },
+              configurable: true,
+              enumerable: true
+            });
+
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              try {
+                Object.defineProperty(Window.prototype, 'fetch', {
+                  get: function() {
+                    return _currentFetch;
+                  },
+                  set: function(val) {
+                    _currentFetch = val;
+                  },
+                  configurable: true,
+                  enumerable: true
+                });
+              } catch (eProto) {}
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>O Guia Definitivo dos Leilões - E-book &amp; Manual Prático</title>
+    <meta name="description" content="Guia prático completo e relatório confidencial para arrematar carros, imóveis e eletrônicos com até 70% de desconto nos portais oficiais sem cair em golpes." />
+    <meta property="og:title" content="O Guia Definitivo dos Leilões - E-book &amp; Manual Prático" />
+    <meta property="og:description" content="Guia prático completo e relatório confidencial para arrematar carros, imóveis e eletrônicos com até 70% de desconto nos portais oficiais sem cair em golpes." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
